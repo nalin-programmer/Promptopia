@@ -11,30 +11,27 @@ A website for writing and viewing Prompts
 
 https://nalin-programmer-promptopia.vercel.app/
 
+## 🛠 Skills
+Next.js, MongoDB, OAuth2, nextAuth, tailWindCSS
 
 
 
-## Authors
-
-- [@nalin-programmer](https://github.com/nalin-programmer)
 
 
 ## Screenshots
 
+#### Home Page
 ![App Screenshot](https://github.com/nalin-programmer/Promptopia/blob/main/public/screenshots/Screenshot%202023-11-09%20at%205.44.45%E2%80%AFPM.png?raw=true)
+#### Google Auth
 ![App Screenshot](https://github.com/nalin-programmer/Promptopia/blob/main/public/screenshots/Screenshot%202023-11-09%20at%205.46.53%E2%80%AFPM.png?raw=true)
+#### Create Post
 ![App Screenshot](https://github.com/nalin-programmer/Promptopia/blob/main/public/screenshots/Screenshot%202023-11-09%20at%205.44.59%E2%80%AFPM.png?raw=true)
+#### My Profile
 ![App Screenshot](https://github.com/nalin-programmer/Promptopia/blob/main/public/screenshots/Screenshot%202023-11-09%20at%205.45.24%E2%80%AFPM.png?raw=true)
+#### View Other Profile
+![App Screenshot](https://github.com/nalin-programmer/Promptopia/blob/main/public/screenshots/Screenshot%202023-11-09%20at%206.14.52%E2%80%AFPM.png?raw=true)
+#### Edit Post
 ![App Screenshot](https://github.com/nalin-programmer/Promptopia/blob/main/public/screenshots/Screenshot%202023-11-09%20at%205.45.37%E2%80%AFPM.png?raw=true)
-
-## Deployment
-
-To deploy this project run
-
-```bash
-  yarn deploy
-```
-
 
 ## Environment Variables
 
@@ -48,6 +45,38 @@ To run this project, you will need to add the following environment variables to
 `NEXTAUTH_SECRET`
 
 
-## 🛠 Skills
-Next.js, MongoDB, OAuth2, nextAuth, tailWindCSS
+## Run Locally
+
+Clone the project
+
+```bash
+  git clone https://github.com/nalin-programmer/Promptopia.git
+```
+
+Go to the project directory
+
+```bash
+  cd Promptopia
+```
+
+Install dependencies
+
+```bash
+  yarn install
+```
+
+Start the server
+
+```bash
+  yarn dev
+```
+
+
+## Deployment
+
+To deploy this project run
+
+```bash
+  yarn deploy
+```
 
