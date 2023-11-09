@@ -7,8 +7,6 @@ import Form from "@components/Form";
 
 const CreatePrompt = () => {
   const router = useRouter();
-
-  console.log("username", username);
   const [submitting, setSubmitting] = useState(false);
   const [post, setPost] = useState({
     prompt: "",
