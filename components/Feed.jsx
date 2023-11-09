@@ -7,11 +7,11 @@ import { useRouter } from "next/navigation";
 const PromptCardList = ({ data, handleTagClick }) => {
   return (
     <div className="mt-16 prompt_layout">
-      {data.map((posts) => (
+      {data.map((post) => (
         <PromptCard
-          key={posts._id}
-          post={posts}
-          handleTagClick={handleTagClick}
+          key={post._id}
+          post={post}
+          handleTagClick={() => handleTagClick && handleTagClick(post)}
         ></PromptCard>
       ))}
     </div>
@@ -26,6 +26,7 @@ const Feed = () => {
   const [filteredPosts, setFilteredPosts] = useState([]);
 
   const filterResult = (search) => {
+    setSearchText(search);
     search = search.toLowerCase();
     setFilteredPosts(
       posts.filter((post) => {
@@ -43,9 +44,11 @@ const Feed = () => {
       })
     );
   };
+  const handleTagClick = (post) => {
+    filterResult(post.tag);
+  };
   const handleSearchChanges = (e) => {
     e.preventDefault();
-    setSearchText(e.target.value);
     filterResult(e.target.value);
   };
 
@@ -73,9 +76,9 @@ const Feed = () => {
         />
       </form>
       {searchText ? (
-        <PromptCardList data={filteredPosts} handleTagClick={() => {}} />
+        <PromptCardList data={filteredPosts} handleTagClick={handleTagClick} />
       ) : (
-        <PromptCardList data={posts} handleTagClick={() => {}} />
+        <PromptCardList data={posts} handleTagClick={handleTagClick} />
       )}
     </section>
   );
