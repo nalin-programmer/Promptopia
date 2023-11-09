@@ -2,6 +2,7 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import PromptCard from "./PromptCard";
+import { useRouter } from "next/navigation";
 
 const PromptCardList = ({ data, handleTagClick }) => {
   return (
@@ -18,10 +19,35 @@ const PromptCardList = ({ data, handleTagClick }) => {
 };
 
 const Feed = () => {
+  const router = useRouter();
+
   const [searchText, setSearchText] = useState("");
   const [posts, setPosts] = useState([]);
+  const [filteredPosts, setFilteredPosts] = useState([]);
 
-  const handleSearchChanges = (e) => {};
+  const filterResult = (search) => {
+    search = search.toLowerCase();
+    setFilteredPosts(
+      posts.filter((post) => {
+        for (const key in post) {
+          if (Object.prototype.hasOwnProperty.call(post, key)) {
+            if (
+              typeof post[key] === "string" &&
+              post[key].toLowerCase().includes(search)
+            ) {
+              return true;
+            }
+          }
+        }
+        return false;
+      })
+    );
+  };
+  const handleSearchChanges = (e) => {
+    e.preventDefault();
+    setSearchText(e.target.value);
+    filterResult(e.target.value);
+  };
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -33,6 +59,7 @@ const Feed = () => {
 
     fetchPost();
   }, []);
+
   return (
     <section className="feed">
       <form className="relative w-full flex-center">
@@ -45,7 +72,11 @@ const Feed = () => {
           className="search_input peer"
         />
       </form>
-      <PromptCardList data={posts} handleTagClick={() => {}} />
+      {searchText ? (
+        <PromptCardList data={filteredPosts} handleTagClick={() => {}} />
+      ) : (
+        <PromptCardList data={posts} handleTagClick={() => {}} />
+      )}
     </section>
   );
 };
